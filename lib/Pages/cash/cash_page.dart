@@ -40,9 +40,19 @@ class CashPage extends GetView<CashController> {
         ),
         floatingActionButton: FloatingActionButton(onPressed: (){}),
       body: SafeArea(
-        child: Text('CashPage'),
+        child: Text('cash'),
       ),
 
     );
   }
+}
+class cashdata {
+  final int id;
+  final int total;
+  final int spend;
+  final int surplus;
+  final String dec;
+
+
+  cashdata(this.id, this.total, this.spend,this.dec,this.surplus);
 }

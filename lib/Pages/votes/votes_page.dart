@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:sidebaaar/Pages/votes/votes_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:sidebaaar/Utills/VotesList.dart';
 
 import '../../Utills/custom_clipper.dart';
+import '../../Utills/listview_kullanimi.dart';
 
 class VotePage extends GetView<VotesController> {
   const VotePage({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class VotePage extends GetView<VotesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Text('VotePage'),
+        child: VoteList(),
       ),
 
        appBar:   PreferredSize(

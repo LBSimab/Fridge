@@ -41,7 +41,7 @@ class Dashboard extends GetView<DashboardController> {
 
       bottomNavigationBar: Obx( () =>
        ClipPath(
-         clipper: MyCustomClipperForBottomNavigationBar(),
+         clipper: MyCustomClipperForBottomNavigationBar (),
          child: BottomNavigationBar(
 
             unselectedItemColor: Colors.black,

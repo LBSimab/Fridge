@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sidebaaar/Pages/home/home_controller.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
+import 'package:sidebaaar/Utills/listview_kullanimi.dart';
 import '../../Utills/custom_clipper.dart';
 class HomePage extends GetView<HomeController> {
 
@@ -101,7 +102,7 @@ class HomePage extends GetView<HomeController> {
 
 
 
-      body: SafeArea(child: Text("Home screen")),
+      body: ListViewKullanimi(),
 
 
 
