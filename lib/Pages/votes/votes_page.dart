@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sidebaaar/Utills/VotesList.dart';
 
 import '../../Utills/custom_clipper.dart';
-import '../../Utills/listview_kullanimi.dart';
+
 
 class VotePage extends GetView<VotesController> {
   const VotePage({Key? key}) : super(key: key);
@@ -44,7 +44,11 @@ class VotePage extends GetView<VotesController> {
     )
 
     ),
-      floatingActionButton: FloatingActionButton(onPressed: (){}),
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){},
+        child: Icon(Icons.add),
+
+      ),
     );
   }
 }
