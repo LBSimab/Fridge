@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sidebaaar/Pages/cash/CashManagement.dart';
 import 'package:sidebaaar/Pages/cash/cash_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,9 @@ class CashPage extends GetView<CashController> {
         ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            onPressed: (){}
+            onPressed: (){
+              Get.to(CashManagement());
+            }
         ),
       body: SafeArea(
         child: Text('cash'),

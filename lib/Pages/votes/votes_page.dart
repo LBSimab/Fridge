@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+
 import 'package:sidebaaar/Pages/votes/votes_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebaaar/Utills/VotesList.dart';
 
+
 import '../../Utills/custom_clipper.dart';
+import 'AddVote.dart';
 
 
 class VotePage extends GetView<VotesController> {
@@ -45,7 +48,9 @@ class VotePage extends GetView<VotesController> {
 
     ),
       floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: (){
+            Get.to(AddVote());
+          },
         child: Icon(Icons.add),
 
       ),
