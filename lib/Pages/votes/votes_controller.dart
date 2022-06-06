@@ -1,50 +1,67 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sidebaaar/Pages/dashboard/dashboard_page.dart';
 
 
 
 class VotesController extends GetxController {
   final loginFormKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final itemNameController = TextEditingController();
+  final expdateController = TextEditingController();
+  final imgController = TextEditingController();
+  final priceController = TextEditingController();
+  final decryptionController = TextEditingController();
+
 
   @override
   void onInit() {
     // Simulating obtaining the user name from some local storage
-    emailController.text = 'foo@foo.com';
+    itemNameController.text = 'food';
+    expdateController.text = '3';
+    imgController.text = 'img';
+    priceController.text = '1000';
+    decryptionController.text = 'dec';
+
     super.onInit();
   }
 
   @override
   void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
+    itemNameController.dispose();
+    decryptionController.dispose();
+
+    priceController.dispose();
+    expdateController.dispose();
+
+    imgController.dispose();
+
     super.onClose();
   }
 
   String? validator(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value == null || value.isEmpty ) {
       return 'Please this field must be filled';
     }
     return null;
   }
 
-  void login() {
+  void Vote() {
     if (loginFormKey.currentState!.validate()) {
-      checkUser(emailController.text, passwordController.text).then((auth) {
+      checkUser(itemNameController.text, expdateController.text,imgController.text,priceController.text,decryptionController.text).then((auth) {
         if (auth) {
           Get.snackbar('Login', 'Login successfully');
+          Get.close(1);
         } else {
           Get.snackbar('Login', 'Invalid email or password');
         }
-        passwordController.clear();
+
       });
     }
   }
 
   // Api Simulation
-  Future<bool> checkUser(String user, String password) {
-    if (user == 'foo@foo.com' && password == '123') {
+  Future<bool> checkUser(String itemname, String expdate,String img,String price , String decryption) {
+    if (itemname == 'food' && expdate == '3'&& img == 'img' && price=='1000' && decryption == "dec") {
       return Future.value(true);
     }
     return Future.value(false);

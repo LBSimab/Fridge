@@ -18,19 +18,37 @@ class AddVote extends GetView<VotesController>{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
-                controller: controller.emailController,
-                decoration: const InputDecoration(labelText: 'E-mail'),
+                controller: controller.itemNameController,
+                decoration: const InputDecoration(labelText: 'itemname'),
                   validator: controller.validator
               ),
               TextFormField(
-                controller: controller.passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
+                controller: controller.expdateController,
+                decoration: const InputDecoration(labelText: 'exp'),
 validator: controller.validator,
                 obscureText: true,
               ),
+              TextFormField(
+                  controller: controller.imgController,
+                  decoration: const InputDecoration(labelText: 'img'),
+                  validator: controller.validator
+              ),
+              TextFormField(
+                controller: controller.priceController,
+                decoration: const InputDecoration(labelText: 'price'),
+                validator: controller.validator,
+                obscureText: true,
+              ),
+              TextFormField(
+                  controller: controller.decryptionController,
+                  decoration: const InputDecoration(labelText: 'dec'),
+                  validator: controller.validator
+              ),
+
+
               ElevatedButton(
-                child: Text('Login'),
-                onPressed: controller.login,
+                child: Text('Vote'),
+                onPressed: controller.Vote  ,
               )
             ],
           ),
