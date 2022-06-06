@@ -49,10 +49,10 @@ class VotesController extends GetxController {
     if (loginFormKey.currentState!.validate()) {
       checkUser(itemNameController.text, expdateController.text,imgController.text,priceController.text,decryptionController.text).then((auth) {
         if (auth) {
-          Get.snackbar('Login', 'Login successfully');
+          Get.snackbar('Item', 'Vote was successfull');
           Get.close(1);
         } else {
-          Get.snackbar('Login', 'Invalid email or password');
+          Get.snackbar('Item', 'invalid item');
         }
 
       });
