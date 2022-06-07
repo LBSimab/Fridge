@@ -13,7 +13,7 @@ class AddVote extends GetView<VotesController>{
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: controller.loginFormKey,
+          key: controller.VoteFormKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

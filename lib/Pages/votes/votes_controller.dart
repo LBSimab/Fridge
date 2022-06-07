@@ -5,7 +5,7 @@ import 'package:sidebaaar/Pages/dashboard/dashboard_page.dart';
 
 
 class VotesController extends GetxController {
-  final loginFormKey = GlobalKey<FormState>();
+  final VoteFormKey = GlobalKey<FormState>();
   final itemNameController = TextEditingController();
   final expdateController = TextEditingController();
   final imgController = TextEditingController();
@@ -46,7 +46,7 @@ class VotesController extends GetxController {
   }
 
   void Vote() {
-    if (loginFormKey.currentState!.validate()) {
+    if (VoteFormKey.currentState!.validate()) {
       checkUser(itemNameController.text, expdateController.text,imgController.text,priceController.text,decryptionController.text).then((auth) {
         if (auth) {
           Get.snackbar('Item', 'Vote was successfull');
