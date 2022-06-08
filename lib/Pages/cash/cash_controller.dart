@@ -11,6 +11,11 @@ final addcash = TextEditingController();
 final cashdecrease = TextEditingController();
 var  cash = 2000;
 
+var totalspend = 700 ;
+
+
+
+
 
 
 String? cashvalidator(String? value) {

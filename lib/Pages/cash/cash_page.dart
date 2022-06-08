@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:sidebaaar/Pages/cash/CashManagement.dart';
 import 'package:sidebaaar/Pages/cash/cash_controller.dart';
@@ -6,9 +8,10 @@ import 'package:flutter/material.dart';
 import '../../Utills/custom_clipper.dart';
 
 class CashPage extends GetView<CashController> {
-  const CashPage({Key? key}) : super(key: key);
+
 
   @override
+CashController controller = Get.put(CashController());
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:   PreferredSize(
@@ -39,27 +42,97 @@ class CashPage extends GetView<CashController> {
             )
 
         ),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: (){
-              Get.to(CashManagement());
-            }
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                child: Icon(CupertinoIcons.arrow_down),
+                onPressed: (){
+                  Get.to(CashManagement());
+                }
+            ),
+            SizedBox(
+              width: 150,
+              height: 40,
+              child: ElevatedButton(
+style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.yellow.shade500)),
+                  child: Text('Cash ManageMent'),
+                  onPressed: (){
+                    Get.to(CashManagement());
+                  }
+              ),
+            ),
+            ElevatedButton(
+                child: Icon(CupertinoIcons.arrow_down),
+                onPressed: (){
+                  Get.to(CashManagement());
+                }
+            )
+          ],
         ),
       body: SafeArea(
-        child: Text('cash'),
+        child: Column(
+          children: [
+            Card (
+              color: 2 % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
+              shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: SizedBox(
+                  width: 500,
+                    height: 50 ,
+                    child: Column(
+                      children: [Text("Total Cash",textAlign:TextAlign.center,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
+
+                      ,Text(controller.cash.toString(),style: TextStyle(fontSize: 20),)
+                      ],
+                    )
+                ),
+              )
+            ),
+            Card (
+                color: 2 % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
+                shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: SizedBox(
+                      width: 500,
+                      height: 50 ,
+                      child: Column(
+                        children: [Text("Total Spend",textAlign:TextAlign.center,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
+
+                          ,Text(controller.totalspend.toString(),style: TextStyle(fontSize: 20),)
+                        ],
+                      )
+                  ),
+                )
+            ),
+            Card (
+                color: 2 % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
+                shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: SizedBox(
+                      width: 500,
+                      height: 50 ,
+                      child: Column(
+                        children: [Text("Total Cash",textAlign:TextAlign.center,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
+
+                          ,Text((controller.cash - controller.totalspend).toString(),style: TextStyle(fontSize: 20),)
+                        ],
+                      )
+                  ),
+                )
+            ),
+
+          ],
+        )
 
       ),
 
     );
   }
-}
-class cashdata {
-  final int id;
-  final int total;
-  final int spend;
-  final int surplus;
-  final String dec;
-
-
-  cashdata(this.id, this.total, this.spend,this.dec,this.surplus);
 }
