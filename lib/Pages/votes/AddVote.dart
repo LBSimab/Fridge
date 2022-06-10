@@ -3,13 +3,42 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sidebaaar/Pages/votes/votes_controller.dart';
 
+import '../../Utills/custom_clipper.dart';
+
 class AddVote extends GetView<VotesController>{
   @override
   Widget build(BuildContext context) {
     final VotesController controller = Get.put(VotesController());
     //
     return Scaffold(
-      appBar: AppBar(title: Text('LOGIN')),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100),
+          child: AppBar(centerTitle: true,title: Text('Vote',style: TextStyle(
+            color: Colors.black87,
+
+            fontSize: 24 ,
+            fontWeight: FontWeight.bold,
+          ),),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.black87),
+            flexibleSpace: ClipPath(
+              clipper: MyCustomClipperForAppBar(),
+              child: Container(
+                decoration: BoxDecoration(
+                    gradient:  LinearGradient(
+                      colors: [ Colors.greenAccent , Colors.white  ],
+                      begin: Alignment.topLeft,
+                      end:  Alignment.bottomRight,
+
+
+                    )
+                ),
+              ),
+            ),
+          )
+
+      ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Form(

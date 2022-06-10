@@ -3,12 +3,41 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sidebaaar/Pages/cash/cash_controller.dart';
 
+import '../../Utills/custom_clipper.dart';
+
 class CashManagement extends GetView<CashController> {
   @override
   Widget build(BuildContext context) {
     final CashController controller = Get.put(CashController());
     return Scaffold(
-      appBar: AppBar(title: Text('CashManage')),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100),
+          child: AppBar(centerTitle: true,title: Text('fridge',style: TextStyle(
+            color: Colors.black87,
+
+            fontSize: 24 ,
+            fontWeight: FontWeight.bold,
+          ),),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.black87),
+            flexibleSpace: ClipPath(
+              clipper: MyCustomClipperForAppBar(),
+              child: Container(
+                decoration: BoxDecoration(
+                    gradient:  LinearGradient(
+                      colors: [ Colors.yellowAccent , Colors.white  ],
+                      begin: Alignment.topLeft,
+                      end:  Alignment.bottomRight,
+
+
+                    )
+                ),
+              ),
+            ),
+          )
+
+      ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Form(
