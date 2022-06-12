@@ -54,29 +54,7 @@ class ListViewKullanimi extends GetView<ListController> {
     );
   }
 
-  ListView listviewBuilder() {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        var currentitem = tumOgrenciler[index];
-        return Card(
-          color: index % 2 == 0 ? Colors.amber[200] : Colors.blue[200],
-          shadowColor: index % 2 == 0 ? Colors.blue[200] : Colors.amber[200],
-          elevation: 12,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: ListTile(
-            title: Text(currentitem.name),
-            subtitle: Text(currentitem.dec),
-            leading: CircleAvatar(
-              child: Text(currentitem.id.toString()),
-            ),
-          ),
-        );
-      },
-      itemCount: tumOgrenciler.length,
-    );
-  }
+
 
 
 }
