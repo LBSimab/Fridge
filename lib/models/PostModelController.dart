@@ -7,7 +7,7 @@ import 'Post_Model.dart';
 class PostModelController extends GetxController{
 Post_Model? post_list ;
 var isDataLoading = false.obs;
-GetUserInformationFromApi()async  {
+getUserInformationFromApi()async  {
 
 
   try{
@@ -24,9 +24,16 @@ http.Response response = await http.get(Uri.tryParse('https://dummyapi.io/data/v
   }
 
   }catch(e) {
-    print('error while taking data$e');
+    print('error while taking data $e');
   }finally{
     isDataLoading(false);
   }
+}
+
+@override
+void onInit() {
+  // TODO: implement onInit
+  super.onInit();
+  getUserInformationFromApi();
 }
 }

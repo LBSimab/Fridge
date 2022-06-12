@@ -5,9 +5,9 @@ import 'package:sidebaaar/models/PostModelController.dart';
 import 'package:sidebaaar/models/Post_Model.dart';
 import 'ListController.dart';
 
-class ListViewKullanimi extends GetView<ListController> {
-  ListViewKullanimi({Key? key}) : super(key: key);
-  final ListController controller = Get.put(ListController());
+class ListViewKullanimi extends GetView<PostModelController> {
+
+
   final PostModelController dataController = Get.put(PostModelController());
 
 
@@ -28,7 +28,7 @@ class ListViewKullanimi extends GetView<ListController> {
                 title: Text('item.dec'),
                 subtitle: Text('item.name'),
                 leading: CircleAvatar(
-                  child: Text('item.id.toString()'),
+                  child: Image.network('2'),
                 ),
                 onTap: () {
                   EasyLoading.showToast(
@@ -51,7 +51,7 @@ class ListViewKullanimi extends GetView<ListController> {
               endIndent: 50,
             );
           },
-          itemCount:10,
+          itemCount:dataController.post_list!.data!.length,
         ),
       ),
     );
