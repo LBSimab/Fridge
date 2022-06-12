@@ -20,6 +20,7 @@ http.Response response = await http.get(Uri.tryParse('https://dummyapi.io/data/v
 
     var result = jsonDecode(response.body);
     post_list = Post_Model.fromJson(result);
+    print('Succesfuly fetch items');
   }
 
   }catch(e) {

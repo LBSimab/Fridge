@@ -1,55 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-
+import 'package:sidebaaar/models/PostModelController.dart';
+import 'package:sidebaaar/models/Post_Model.dart';
 import 'ListController.dart';
 
 class ListViewKullanimi extends GetView<ListController> {
   ListViewKullanimi({Key? key}) : super(key: key);
   final ListController controller = Get.put(ListController());
-  List<itemdata> tumOgrenciler = List.generate(
-    50,
-    (index) =>itemdata(index + 1, "Item Number${index + 1}", true, "decription for item number ${index+1 }", index + 2, "Item Name for Item number ${index+1}"),
-  );
+  final PostModelController dataController = Get.put(PostModelController());
+
+
 
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.separated(
-        itemBuilder: (context, index) {
-          var item = tumOgrenciler[index];
-          return Card(
-            color: index % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            child: ListTile(
-              title: Text(item.dec),
-              subtitle: Text(item.name),
-              leading: CircleAvatar(
-                child: Text(item.id.toString()),
+      body: Obx(()=>dataController.isDataLoading.value? Center(child:CircularProgressIndicator(),):
+         ListView.separated(
+          itemBuilder: (context, i) {
+            var item = [i];
+            return Card(
+              color: i % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              child: ListTile(
+                title: Text('item.dec'),
+                subtitle: Text('item.name'),
+                leading: CircleAvatar(
+                  child: Text('item.id.toString()'),
+                ),
+                onTap: () {
+                  EasyLoading.showToast(
+                    "Eleman Tiklandi",
+                    toastPosition: EasyLoadingToastPosition.bottom,
+                  );
+                },
+                  onLongPress: () {
+                    _alertDialogIslemleri(context, 'item.name');
+                  }
               ),
-              onTap: () {
-                EasyLoading.showToast(
-                  "Eleman Tiklandi",
-                  toastPosition: EasyLoadingToastPosition.bottom,
-                );
-              },
-                onLongPress: () {
-                  _alertDialogIslemleri(context, item.name);
-                }
-            ),
 
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const Divider(
-            color: Colors.blueGrey,
-            thickness: 2,
-            indent: 50,
-            endIndent: 50,
-          );
-        },
-        itemCount: tumOgrenciler.length,
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const Divider(
+              color: Colors.blueGrey,
+              thickness: 2,
+              indent: 50,
+              endIndent: 50,
+            );
+          },
+          itemCount:10,
+        ),
       ),
     );
   }

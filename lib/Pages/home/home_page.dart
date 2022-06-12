@@ -4,6 +4,7 @@ import 'package:sidebaaar/Pages/home/home_controller.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:sidebaaar/Utills/listview_kullanimi.dart';
 import '../../Utills/custom_clipper.dart';
+import '../../models/PostModelController.dart';
 class HomePage extends GetView<HomeController> {
 
   @override
@@ -11,6 +12,8 @@ class HomePage extends GetView<HomeController> {
 
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
     final HomeController controller = Get.put(HomeController());
+
+
 
     return Scaffold(
       drawer: Drawer(
