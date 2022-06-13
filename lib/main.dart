@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sidebaaar/Pages/dashboard/dashboard_bindings.dart';
 import 'package:sidebaaar/Pages/dashboard/dashboard_page.dart';
 import 'package:sidebaaar/Pages/home/home_page.dart';
 import 'package:sidebaaar/Pages/dashboard/dashboard_controller.dart';
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
 
 getPages: Routes.routes,
       initialRoute: '/',
+      initialBinding: DashboardBinding(),
       debugShowCheckedModeBanner: false,
+
     );
   }
 }

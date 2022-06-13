@@ -7,8 +7,8 @@ import 'package:sidebaaar/models/PostModelController.dart';
 
 class VoteList extends GetView<PostModelController>{
 
-  VoteList({Key? key}) : super(key: key);
-  final PostModelController controller = Get.put(PostModelController());
+
+
 
   // List<votedata> tumOgrenciler = List.generate(
   //   50,
@@ -20,7 +20,7 @@ class VoteList extends GetView<PostModelController>{
     return Scaffold(
         body: ListView.separated(
         itemBuilder: (context, index) {
-      var currentvote = [index];
+
       return Card(
         color: index % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
         shape:
@@ -51,7 +51,7 @@ class VoteList extends GetView<PostModelController>{
     endIndent: 50,
     );
     },
-    itemCount: 3,
+    itemCount: 7,
     ),
     );
     }

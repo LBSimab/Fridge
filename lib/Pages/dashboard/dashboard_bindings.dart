@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sidebaaar/models/PostModelController.dart';
 import 'dashboard_controller.dart';
 import '../home/home_controller.dart';
 import '../cash/cash_controller.dart';
@@ -13,7 +14,7 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<CashController>(() => CashController());
     Get.lazyPut<ChatController>(() => ChatController());
-
+    Get.lazyPut<PostModelController>(() => PostModelController());
   }
 
 

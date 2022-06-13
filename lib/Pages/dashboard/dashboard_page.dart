@@ -15,7 +15,7 @@ import 'dashboard_bindings.dart';
 
 class Dashboard extends GetView<DashboardController> {
 
-  DashboardController controller = Get.put(DashboardController());
+
 
   @override
   Widget build(BuildContext context) {
