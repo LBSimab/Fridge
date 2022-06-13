@@ -3,7 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:sidebaaar/models/PostModelController.dart';
 import 'package:sidebaaar/models/Post_Model.dart';
-import 'ListController.dart';
+
 
 class ListViewKullanimi extends GetView<PostModelController> {
 
@@ -19,16 +19,35 @@ class ListViewKullanimi extends GetView<PostModelController> {
       body: Obx(()=>dataController.isDataLoading.value? Center(child:CircularProgressIndicator(),):
          ListView.separated(
           itemBuilder: (context, i) {
-            var item = [i];
+
+            String name = '';
+
+String lastname = '';
+
+String image = '';
+
+String comment = '';
+
+try{
+  image = 'dataController.post_list!.data![i].picture!';
+}catch(e){
+  image = '';
+}
+
+            try{
+              'name = dataController.post_list!.data![i].firstName!';
+            }catch(e){
+              name = '';
+            }
             return Card(
               color: i % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
               shape:
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               child: ListTile(
-                title: Text('item.dec'),
-                subtitle: Text('item.name'),
+                title: Text('dataController.post_list!.data!.first.toString()'),
+                subtitle: Text(name),
                 leading: CircleAvatar(
-                  child: Image.network('2'),
+                  child: Image.network(image),
                 ),
                 onTap: () {
                   EasyLoading.showToast(
@@ -51,7 +70,7 @@ class ListViewKullanimi extends GetView<PostModelController> {
               endIndent: 50,
             );
           },
-          itemCount:dataController.post_list!.data!.length,
+          itemCount:controller.post_list!.results!.length.toInt(),
         ),
       ),
     );
@@ -62,16 +81,16 @@ class ListViewKullanimi extends GetView<PostModelController> {
 
 }
 
-class itemdata {
-  final int id;
-  final String img;
-  final bool existence;
-  final String dec;
-  final int expdate;
-  final String name;
-
-  itemdata(this.id, this.img, this.existence,this.dec,this.expdate,this.name);
-}
+// class itemdata {
+//   final int id;
+//   final String img;
+//   final bool existence;
+//   final String dec;
+//   final int expdate;
+//   final String name;
+//
+//   itemdata(this.id, this.img, this.existence,this.dec,this.expdate,this.name);
+// }
 
 void _alertDialogIslemleri(BuildContext myContext, String name) {
   showDialog(
