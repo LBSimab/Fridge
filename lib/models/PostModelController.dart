@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:sidebaaar/Utills/listview_kullanimi.dart';
 import '../provider.dart';

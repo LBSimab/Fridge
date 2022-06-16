@@ -23,35 +23,17 @@ class ListViewKullanimi extends GetView<PostModelController> {
            ListView.separated(
             itemBuilder: (context, i) {
 
-              String name = '';
-
-String lastname = '';
 
 
-String image = '';
-
-String comment = '';
-
-try{
-  image = '';
-}catch(e){
-  image = '';
-}
-
-              try{
-                '';
-              }catch(e){
-                name = '';
-              }
               return Card(
                 color: i % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
                 shape:
                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 child: ListTile(
                   title: Text(data![i]['name']['first']),
-                  subtitle: Text(name),
+                  subtitle: Text(data[i]['name']['last']),
                   leading: CircleAvatar(
-                    child: Icon(Icons.add),
+                    backgroundImage: NetworkImage(data[i]['picture']['medium']),
                   ),
                   onTap: () {
                     EasyLoading.showToast(
@@ -74,7 +56,7 @@ try{
                 endIndent: 50,
               );
             },
-            itemCount:5,
+            itemCount:10,
           ),
         ),
       ),

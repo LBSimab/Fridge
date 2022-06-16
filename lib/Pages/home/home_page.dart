@@ -11,88 +11,90 @@ class HomePage extends GetView<HomeController> {
   Widget build( context) {
 
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
-    final HomeController controller = Get.put(HomeController());
+    final PostModelController controller = Get.put(PostModelController());
 
 
 
     return Scaffold(
-      drawer: Drawer(
-        child: Container(
+      drawer: controller.obx((data)=> Drawer(
+          child: Container(
 
-          color: Colors.transparent,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Center(
-                  child: CircleAvatar(
-                    radius: 40.0,
-                    backgroundImage: AssetImage('assets/Cat.jpg'),
-                  ),
-                ),
-                Divider(
-                  color: Colors.grey[800],
-                  height: 60.0,
-                ),
-                Text(
-                  'NAME',
-                  style: TextStyle(
-                    color: Colors.black,
-                    letterSpacing: 2.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 00.0),
-                Text(
-                  "Person.vtrNm",
-                  style: TextStyle(
-                    color: Colors.deepOrange[600],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28.0,
-                    letterSpacing: 2.0,
-                  ),
-                ),
-                SizedBox(height: 00.0),
-                Text(
-                  'ّFavorite day',
-                  style: TextStyle(
-                    color: Colors.black,
-                    letterSpacing: 2.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10.0),
-                Text(
-                  "Person.fvrtday",
-                  style: TextStyle(
-                    color: Colors.deepOrange[600],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28.0,
-                    letterSpacing: 2.0,
-                  ),
-                ),
-                SizedBox(height: 0.0),
-                Text(
-                  'Current Passed Votes',
-                  style: TextStyle(
-                    color: Colors.black,
-                    letterSpacing: 2.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10.0),
-                Text(
-                  "Person.vtpssrtio.toString",
-                  style: TextStyle(
-                    color: Colors.deepOrange[600],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28.0,
-                    letterSpacing: 2.0,
-                  ),
-                ),
+            color: Colors.transparent,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Center(
+                    child: CircleAvatar(
+                     radius: 30,
+                        backgroundImage: NetworkImage(data![2]['picture']['large']),
 
-              ])
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.grey[800],
+                    height: 60.0,
+                  ),
+                  Text(
+                   'name',
+                    style: TextStyle(
+                      color: Colors.black,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 00.0),
+                  Text(
+                    data![2]['name']['first'] + data![2]['name']['last'],
+                    style: TextStyle(
+                      color: Colors.deepOrange[600],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28.0,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                  SizedBox(height: 00.0),
+                  Text(
+                    'ّFavorite day',
+                    style: TextStyle(
+                      color: Colors.black,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    "Person.fvrtday",
+                    style: TextStyle(
+                      color: Colors.deepOrange[600],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28.0,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                  SizedBox(height: 0.0),
+                  Text(
+                    'Current Passed Votes',
+                    style: TextStyle(
+                      color: Colors.black,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    "Person.vtpssrtio.toString",
+                    style: TextStyle(
+                      color: Colors.deepOrange[600],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28.0,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+
+                ])
+          ),
+
         ),
-
       ),
 
 
