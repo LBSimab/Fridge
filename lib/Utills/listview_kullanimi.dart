@@ -26,14 +26,17 @@ class ListViewKullanimi extends GetView<PostModelController> {
 
 
               return Card(
+
                 color: i % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
                 shape:
                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 child: ListTile(
-                  title: Text(data![i]['name']['first']),
-                  subtitle: Text(data[i]['name']['last']),
+
+                  title: Text("Name:" + data![i]['strMeal']),
+                  subtitle: Text("Food ID:" + data[i]['idMeal']),
                   leading: CircleAvatar(
-                    backgroundImage: NetworkImage(data[i]['picture']['medium']),
+                    radius: 50,
+                    backgroundImage: NetworkImage(data[i]['strMealThumb']),
                   ),
                   onTap: () {
                     EasyLoading.showToast(
@@ -51,9 +54,9 @@ class ListViewKullanimi extends GetView<PostModelController> {
             separatorBuilder: (context, index) {
               return const Divider(
                 color: Colors.blueGrey,
-                thickness: 2,
-                indent: 50,
-                endIndent: 50,
+                thickness: 1,
+                indent: 20,
+                endIndent: 20,
               );
             },
             itemCount:10,

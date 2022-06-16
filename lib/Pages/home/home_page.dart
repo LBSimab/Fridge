@@ -5,13 +5,15 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:sidebaaar/Utills/listview_kullanimi.dart';
 import '../../Utills/custom_clipper.dart';
 import '../../models/PostModelController.dart';
+import '../../models/UserModelController.dart';
 class HomePage extends GetView<HomeController> {
 
   @override
   Widget build( context) {
 
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
-    final PostModelController controller = Get.put(PostModelController());
+    final UserModelController controller = Get.put(UserModelController());
+
 
 
 
@@ -25,7 +27,7 @@ class HomePage extends GetView<HomeController> {
                 children: <Widget>[
                   Center(
                     child: CircleAvatar(
-                     radius: 30,
+                     radius: 80,
                         backgroundImage: NetworkImage(data![2]['picture']['large']),
 
                     ),
@@ -35,7 +37,7 @@ class HomePage extends GetView<HomeController> {
                     height: 60.0,
                   ),
                   Text(
-                   'name',
+                   'Name',
                     style: TextStyle(
                       color: Colors.black,
                       letterSpacing: 2.0,
@@ -44,7 +46,7 @@ class HomePage extends GetView<HomeController> {
                   ),
                   SizedBox(height: 00.0),
                   Text(
-                    data![2]['name']['first'] + data![2]['name']['last'],
+                    data![2]['name']['first']  + data![2]['name']['last'],
                     style: TextStyle(
                       color: Colors.deepOrange[600],
                       fontWeight: FontWeight.bold,
@@ -54,7 +56,7 @@ class HomePage extends GetView<HomeController> {
                   ),
                   SizedBox(height: 00.0),
                   Text(
-                    'ّFavorite day',
+                    'Age',
                     style: TextStyle(
                       color: Colors.black,
                       letterSpacing: 2.0,
@@ -63,7 +65,7 @@ class HomePage extends GetView<HomeController> {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    "Person.fvrtday",
+                    data![2]['dob']['age'].toString() ,
                     style: TextStyle(
                       color: Colors.deepOrange[600],
                       fontWeight: FontWeight.bold,
@@ -73,7 +75,7 @@ class HomePage extends GetView<HomeController> {
                   ),
                   SizedBox(height: 0.0),
                   Text(
-                    'Current Passed Votes',
+                    'Country',
                     style: TextStyle(
                       color: Colors.black,
                       letterSpacing: 2.0,
@@ -82,7 +84,7 @@ class HomePage extends GetView<HomeController> {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    "Person.vtpssrtio.toString",
+                    data![2]['location']['country'],
                     style: TextStyle(
                       color: Colors.deepOrange[600],
                       fontWeight: FontWeight.bold,
@@ -108,6 +110,8 @@ class HomePage extends GetView<HomeController> {
 
 
       body: ListViewKullanimi(),
+
+
 
 
 
