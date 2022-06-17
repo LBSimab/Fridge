@@ -8,16 +8,13 @@ class PostModelController extends GetxController with StateMixin<List<dynamic>> 
 
 
 @override
-  void onInit(){
-
+  void onInit() {
   super.onInit();
-  FoodProvider().getFood().then((resp){
-
-    change(resp,status: RxStatus.success());
-  } ,onError: (err){change(null,status: RxStatus.error(err.toString()));
-
+  FoodProvider().getFood().then((resp) {
+    change(resp, status: RxStatus.success());
+  }, onError: (err) {
+    change(null, status: RxStatus.error(err.toString()));
   });
-
 
 
 }

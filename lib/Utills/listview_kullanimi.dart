@@ -32,20 +32,20 @@ class ListViewKullanimi extends GetView<PostModelController> {
                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 child: ListTile(
 
-                  title: Text("Name:" + data![i]['strMeal']),
-                  subtitle: Text("Food ID:" + data[i]['idMeal']),
+                  title: Text("Name:" + data![i]['strMeal'],style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold)),
+                  subtitle: Text('FooD id :  '+data[i]['idMeal'],),
                   leading: CircleAvatar(
                     radius: 50,
                     backgroundImage: NetworkImage(data[i]['strMealThumb']),
                   ),
                   onTap: () {
                     EasyLoading.showToast(
-                      "Eleman Tiklandi",
+                      "Item",
                       toastPosition: EasyLoadingToastPosition.bottom,
                     );
                   },
                     onLongPress: () {
-                      _alertDialogIslemleri(context, 'item.name');
+                      _alertDialogIslemleri(context, data![i]['strMeal'],data![i]['strMealThumb'],data![i]['strInstructions']);
                     }
                 ),
 
@@ -59,7 +59,7 @@ class ListViewKullanimi extends GetView<PostModelController> {
                 endIndent: 20,
               );
             },
-            itemCount:10,
+            itemCount:data!.length,
           ),
         ),
       ),
@@ -82,13 +82,14 @@ class ListViewKullanimi extends GetView<PostModelController> {
 //   itemdata(this.id, this.img, this.existence,this.dec,this.expdate,this.name);
 // }
 
-void _alertDialogIslemleri(BuildContext myContext, String name) {
+void _alertDialogIslemleri(BuildContext myContext, String name , String pic,String dec) {
   showDialog(
       context: myContext,
       builder: (contex) {
         return AlertDialog(
-          title: Text(name),
-          content: const Text("item name"),
+          title:Image.network(pic,),
+          content:Text(dec),
+
           actions: [
             ButtonBar(
               children: [

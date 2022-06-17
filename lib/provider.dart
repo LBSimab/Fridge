@@ -59,7 +59,7 @@ class FoodProvider extends GetConnect {
   // Get request
   Future<List<dynamic>> getFood() async {
 
-    final response = await get('https://www.themealdb.com/api/json/v1/1/filter.php?c=beef');
+    final response = await get('https://www.themealdb.com/api/json/v1/1/search.php?f=s');
 
     if(response.status.hasError){
       return Future.error(response.statusText!);

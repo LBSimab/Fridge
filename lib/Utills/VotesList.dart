@@ -5,11 +5,14 @@ import 'package:get/get.dart';
 import 'package:sidebaaar/Utills/VotesController.dart';
 import 'package:sidebaaar/models/PostModelController.dart';
 
-class VoteList extends GetView<PostModelController>{
+
+import '../models/UserModelController.dart';
+
+class VoteList extends GetView<UserModelController>{
 
 
-
-
+  final UserModelController controller = Get.put(UserModelController());
+  final PostModelController postcontroller = Get.put(PostModelController());
   // List<votedata> tumOgrenciler = List.generate(
   //   50,
   //       (index) => votedata(index+1, "item name for ${index+1}", index.toString() , "decription for item number ${index+1}", index.toString()),
@@ -17,19 +20,21 @@ class VoteList extends GetView<PostModelController>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
+    return controller.obx((data) =>  Scaffold(
         body: ListView.separated(
-        itemBuilder: (context, index) {
+        itemBuilder: (context, i) {
 
       return Card(
-        color: index % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
+        color: i % 2 == 0 ? Colors.green[300] : Colors.cyan[200],
         shape:
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: ListTile(
-          title: Text('1'),
-          subtitle: Text('currentvote.dec'),
+          title: Text(data![i]['name']['first']),
+          subtitle: Text('Voted For item With ID :'+data![i]['location']['postcode'].toString()),
+          minLeadingWidth: 100,
           leading: CircleAvatar(
-            child: Text('currentvote.id.'),
+            radius: 50,
+            backgroundImage: NetworkImage(data![i]['picture']['large']),
           ),
           onTap: () {
             EasyLoading.showToast(
@@ -51,9 +56,9 @@ class VoteList extends GetView<PostModelController>{
     endIndent: 50,
     );
     },
-    itemCount: 7,
+    itemCount: data!.length,
     ),
-    );
+    ));
     }
 }
 
